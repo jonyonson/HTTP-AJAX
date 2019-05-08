@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import NewContact from './components/NewContact/NewContact';
 import ContactsList from './components/ContactsList/ContactsList';
 import SearchBar from './components/SearchBar/SearchBar';
 
@@ -59,6 +60,7 @@ class App extends Component {
           searchContacts={this.searchContacts}
           addContact={this.addContact}
         />
+        <NewContact />
         <ContactsList contacts={friends} />
       </div>
     );

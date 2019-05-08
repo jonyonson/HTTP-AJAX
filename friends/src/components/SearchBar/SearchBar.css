@@ -2,7 +2,7 @@
 .SearchBar {
   border-bottom: 1px solid black;
   padding: 15px;
-  background: black;
+  background: #342E37;
 }
 
 .SearchBar__inner {
@@ -15,16 +15,20 @@
 }
 
 .SearchBar input {
-  background-color: black;
+  background-color: #342E37;
   border: 0;
-  color: white;
-  border-bottom: 2px solid white;
+  color: #FAFFFD;
+  border-bottom: 2px solid #FAFFFD;
   padding: 0 0 7px 0;
   font-size: 20px;
   outline: none;
 }
 
+.SearchBar input::placeholder {
+  color: #FAFFFD;
+}
+
 .SearchBar__add-contact {
   cursor: pointer;
-  color: white;
+  color: #FAFFFD;
 }

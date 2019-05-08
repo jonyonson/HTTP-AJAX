@@ -40,7 +40,7 @@ class SearchBar extends Component {
             className="SearchBar__add-contact"
             onClick={this.props.addContact}
           >
-            <MdPersonAdd color="#FFF" size="32" />
+            <MdPersonAdd color="#fafffd" size="32" />
           </div>
         </div>
       </div>
