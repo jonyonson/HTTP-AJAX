@@ -37,8 +37,9 @@ class App extends Component {
 
   searchContacts = searchTerm => {
     const friends = [...this.state.friends];
+
     const filteredFriends = friends.filter(friend => {
-      return friend.name.toLowerCase().includes(searchTerm);
+      return friend.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
     if (searchTerm.length > 0) {
@@ -53,12 +54,11 @@ class App extends Component {
     //   return <h1>Loading...</h1>;
     // }
 
-    let friends;
-    if (this.state.filteredFriends.length > 0) {
-      friends = this.state.filteredFriends;
-    } else {
-      friends = this.state.friends;
-    }
+    const friends =
+      this.state.filteredFriends.length > 0
+        ? this.state.filteredFriends
+        : this.state.friends;
+
     return (
       <div className="App">
         <SearchBar

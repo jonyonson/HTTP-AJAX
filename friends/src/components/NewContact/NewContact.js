@@ -28,7 +28,7 @@ class NewContact extends Component {
   render() {
     return (
       <div className="NewContact ContactCard">
-        <form onSubmit={this.onSubmit}>
+        <form className="NewContact__form" onSubmit={this.onSubmit}>
           <input
             className="NewContact__name"
             name="name"
@@ -42,6 +42,7 @@ class NewContact extends Component {
           />
           <br />
           <input
+            className="NewContact__email"
             name="email"
             type="email"
             autoCapitalize="none"
@@ -53,6 +54,7 @@ class NewContact extends Component {
           />
           <br />
           <input
+            className="NewContact__phone"
             name="phone"
             type="tel"
             autoCapitalize="none"
@@ -64,6 +66,7 @@ class NewContact extends Component {
           />
           <br />
           <input
+            className="NewContact__age"
             name="age"
             type="number"
             autoCapitalize="none"
