@@ -12,39 +12,45 @@ function getNewId() {
 let friends = [
   {
     id: 1,
-    name: 'Ben',
-    age: 30,
-    email: 'ben@lambdaschool.com',
+    name: 'Ross Gellar',
+    age: 51,
+    email: 'dinosaurdude@aol.com',
+    phone: '(212) 987-2736',
   },
   {
     id: 2,
-    name: 'Austen',
-    age: 32,
-    email: 'austen@lambdaschool.com',
+    name: 'Rachel Green',
+    age: 49,
+    email: 'rachelg@hotmail.com',
+    phone: '(212) 555-3223',
   },
   {
     id: 3,
-    name: 'Ryan',
-    age: 35,
-    email: 'ryan@lambdaschool.com',
+    name: 'Monica Gellar',
+    age: 49,
+    email: 'monicabinggellar@gmail.com',
+    phone: '(212) 324-1827',
   },
   {
     id: 4,
-    name: 'Sean',
-    age: 35,
-    email: 'sean@lambdaschool.com',
+    name: 'Joey Tribbiani',
+    age: 50,
+    email: 'joe7362@yahoo.com',
+    phone: '(212) 332-0987',
   },
   {
     id: 5,
-    name: 'Michelle',
-    age: 67,
-    email: 'michelle@gmail.com',
+    name: 'Chandler Bing',
+    age: 50,
+    email: 'chandlerbing@icloud.com',
+    phone: '(212) 659-0987',
   },
   {
     id: 6,
-    name: 'Luis',
-    age: 47,
-    email: 'luis@lambdaschool.com',
+    name: 'Phoebe Buffay',
+    age: 51,
+    email: 'phoebe@hotmail.com',
+    phone: '(212) 954-2321',
   },
 ];
 
@@ -76,8 +82,8 @@ app.put('/friends/:id', (req, res) => {
 });
 
 app.delete('/friends/:id', (req, res) => {
-	friends = friends.filter(friend => friend.id != req.params.id);
-	res.status(200).json(friends);
+  friends = friends.filter(friend => friend.id != req.params.id);
+  res.status(200).json(friends);
 });
 
 app.listen(5000, () => {
