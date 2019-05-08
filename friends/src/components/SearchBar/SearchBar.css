@@ -1,0 +1,30 @@
+
+.SearchBar {
+  border-bottom: 1px solid black;
+  padding: 15px;
+  background: black;
+}
+
+.SearchBar__inner {
+  width: 600px;
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SearchBar input {
+  background-color: black;
+  border: 0;
+  color: white;
+  border-bottom: 2px solid white;
+  padding: 0 0 7px 0;
+  font-size: 20px;
+  outline: none;
+}
+
+.SearchBar__add-contact {
+  cursor: pointer;
+  color: white;
+}

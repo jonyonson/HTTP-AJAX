@@ -26,7 +26,7 @@ let friends = [
   },
   {
     id: 3,
-    name: 'Monica Gellar',
+    name: 'Monica Gellar-Bing',
     age: 49,
     email: 'monicabinggellar@gmail.com',
     phone: '(212) 324-1827',
