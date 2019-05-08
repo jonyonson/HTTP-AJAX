@@ -31,11 +31,7 @@ input[type="submit"] {
   border: 1px solid black;
   cursor: pointer;
   padding: 5px 10px;
-  /* position: absolute;
-  bottom: 15px;
-  right: 20px; */
   background-color:#3C91E6;
-  /* background-color:#9FD356; */
   color: #FAFFFD;
   font-size: 15px;
   font-weight: 600;
@@ -46,8 +42,7 @@ input[type="submit"] {
   background-color: #FA824C;
 }
 
-
-.asdf {
+.NewContact__button-group {
   position: absolute;
   bottom: 15px;
   right: 20px;

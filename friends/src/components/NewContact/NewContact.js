@@ -73,8 +73,13 @@ class NewContact extends Component {
             value={this.state.value}
             onChange={this.handleChange}
           />
-          <div className="asdf">
-            <button className="NewContact__cancel-btn">Cancel</button>
+          <div className="NewContact__button-group">
+            <button
+              className="NewContact__cancel-btn"
+              onClick={this.props.hideForm}
+            >
+              Cancel
+            </button>
             <input type="submit" value="Submit" />
           </div>
         </form>

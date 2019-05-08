@@ -11,6 +11,7 @@ class App extends Component {
   state = {
     friends: [],
     filteredFriends: [],
+    showNewContact: false,
   };
 
   componentDidMount() {
@@ -26,8 +27,12 @@ class App extends Component {
       });
   }
 
-  addContact = () => {
-    console.log('add contact');
+  showNewContactForm = () => {
+    this.setState({ showNewContact: true });
+  };
+
+  hideNewContactForm = () => {
+    this.setState({ showNewContact: false });
   };
 
   searchContacts = searchTerm => {
@@ -58,9 +63,11 @@ class App extends Component {
       <div className="App">
         <SearchBar
           searchContacts={this.searchContacts}
-          addContact={this.addContact}
+          addContact={this.showNewContactForm}
         />
-        <NewContact />
+        {this.state.showNewContact && (
+          <NewContact hideForm={this.hideNewContactForm} />
+        )}
         <ContactsList contacts={friends} />
       </div>
     );
