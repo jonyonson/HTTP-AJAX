@@ -12,7 +12,6 @@ class NewContact extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, email, phone, age } = this.state;
-    console.log(name, email, age, phone);
     const newContact = {
       name,
       email,
@@ -80,12 +79,12 @@ class NewContact extends Component {
             onChange={this.handleChange}
           />
           <div className="NewContact__button-group">
-            {/* <button
+            <div
               className="NewContact__cancel-btn"
               onClick={this.props.hideForm}
             >
               Cancel
-            </button> */}
+            </div>
             <input type="submit" value="Submit" />
           </div>
         </form>

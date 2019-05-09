@@ -10,6 +10,7 @@ class ContactsList extends Component {
           <ContactCard
             key={friend.id}
             contact={friend}
+            updateContact={this.props.updateContact}
             deleteContact={this.props.deleteContact}
           />
         ))}

@@ -47,6 +47,7 @@ input[type="submit"] {
 .NewContact__cancel-btn {
   margin-right: 10px;
   background-color: #FA824C;
+  display: inline-block;
 }
 
 .NewContact__button-group {

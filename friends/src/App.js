@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+// import { Route } from 'react-router-dom';
 import NewContact from './components/NewContact/NewContact';
 import ContactsList from './components/ContactsList/ContactsList';
 import SearchBar from './components/SearchBar/SearchBar';
+// import Contact from './components/Contact/Contact';
 
 import './App.css';
 
@@ -17,21 +18,14 @@ class App extends Component {
   componentDidMount() {
     axios
       .get('http://localhost:5000/friends')
-      .then(response => {
-        this.setState({
-          friends: response.data,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err));
   }
 
   addContact = contact => {
     axios
       .post('http://localhost:5000/friends', contact)
       .then(res => {
-        console.log(res.data);
         this.setState({
           friends: res.data,
           showNewContact: false,
@@ -40,23 +34,19 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  deleteItem = id => {
-    axios
-      .delete(`http://localhost:3333/items/${id}`)
-      .then(res => {
-        this.setState({ items: res.data });
-        this.props.history.push('/item-list');
-      })
-      .catch(err => console.log(err));
-  };
-
   deleteContact = id => {
     axios
       .delete(`http://localhost:5000/friends/${id}`)
-      .then(res => {
-        this.setState({ friends: res.data });
-      })
+      .then(res => this.setState({ friends: res.data }))
       .catch(err => console.log(err));
+  };
+
+  updateContact = contact => {
+    console.log(contact);
+    // axios
+    //   .put(`http://localhost:5000/friends/${updatedItem.id}`, updatedItem)
+    //   .then(res => this.setState({ items: res.data }))
+    //   .catch(err => console.log(err));
   };
 
   showNewContactForm = () => {
@@ -69,11 +59,9 @@ class App extends Component {
 
   searchContacts = searchTerm => {
     const friends = [...this.state.friends];
-
     const filteredFriends = friends.filter(friend => {
       return friend.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
-
     if (searchTerm.length > 0) {
       this.setState({ filteredFriends });
     } else {
@@ -82,10 +70,6 @@ class App extends Component {
   };
 
   render() {
-    // if (this.state.friends.length === 0) {
-    //   return <h1>Loading...</h1>;
-    // }
-
     const friends =
       this.state.filteredFriends.length > 0
         ? this.state.filteredFriends
@@ -103,7 +87,21 @@ class App extends Component {
             hideForm={this.hideNewContactForm}
           />
         )}
-        <ContactsList contacts={friends} deleteContact={this.deleteContact} />
+        <ContactsList
+          contacts={friends}
+          updateContact={this.updateContact}
+          deleteContact={this.deleteContact}
+        />
+        {/* <Route
+          path="/contacts/:id"
+          render={props => (
+            <Contact
+              {...props}
+              contacts={friends}
+              deleteContact={this.deleteContact}
+            />
+          )}
+        /> */}
       </div>
     );
   }
