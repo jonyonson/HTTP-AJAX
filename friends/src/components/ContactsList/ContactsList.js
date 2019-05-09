@@ -7,7 +7,11 @@ class ContactsList extends Component {
     return (
       <div className="ContactsList">
         {this.props.contacts.map(friend => (
-          <ContactCard key={friend.id} contact={friend} />
+          <ContactCard
+            key={friend.id}
+            contact={friend}
+            deleteContact={this.props.deleteContact}
+          />
         ))}
       </div>
     );

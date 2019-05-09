@@ -9,14 +9,17 @@ class NewContact extends Component {
     age: null,
   };
 
-  onSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log(
-      this.state.name,
-      this.state.email,
-      this.state.phone,
-      this.state.age
-    );
+    const { name, email, phone, age } = this.state;
+    console.log(name, email, age, phone);
+    const newContact = {
+      name,
+      email,
+      age,
+      phone,
+    };
+    this.props.addContact(newContact);
   };
 
   handleChange = event => {
@@ -28,7 +31,7 @@ class NewContact extends Component {
   render() {
     return (
       <div className="NewContact ContactCard">
-        <form className="NewContact__form" onSubmit={this.onSubmit}>
+        <form className="NewContact__form" onSubmit={this.handleSubmit}>
           <input
             className="NewContact__name"
             name="name"
@@ -77,12 +80,12 @@ class NewContact extends Component {
             onChange={this.handleChange}
           />
           <div className="NewContact__button-group">
-            <button
+            {/* <button
               className="NewContact__cancel-btn"
               onClick={this.props.hideForm}
             >
               Cancel
-            </button>
+            </button> */}
             <input type="submit" value="Submit" />
           </div>
         </form>

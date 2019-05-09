@@ -27,6 +27,38 @@ class App extends Component {
       });
   }
 
+  addContact = contact => {
+    axios
+      .post('http://localhost:5000/friends', contact)
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          friends: res.data,
+          showNewContact: false,
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  deleteItem = id => {
+    axios
+      .delete(`http://localhost:3333/items/${id}`)
+      .then(res => {
+        this.setState({ items: res.data });
+        this.props.history.push('/item-list');
+      })
+      .catch(err => console.log(err));
+  };
+
+  deleteContact = id => {
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => {
+        this.setState({ friends: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
   showNewContactForm = () => {
     this.setState({ showNewContact: true });
   };
@@ -66,9 +98,12 @@ class App extends Component {
           addContact={this.showNewContactForm}
         />
         {this.state.showNewContact && (
-          <NewContact hideForm={this.hideNewContactForm} />
+          <NewContact
+            addContact={this.addContact}
+            hideForm={this.hideNewContactForm}
+          />
         )}
-        <ContactsList contacts={friends} />
+        <ContactsList contacts={friends} deleteContact={this.deleteContact} />
       </div>
     );
   }
