@@ -4,15 +4,17 @@ import axios from 'axios';
 import NewContact from './components/NewContact/NewContact';
 import ContactsList from './components/ContactsList/ContactsList';
 import SearchBar from './components/SearchBar/SearchBar';
-// import Contact from './components/Contact/Contact';
+import UpdateContact from './components/UpdateContact/UpdateContact';
 
 import './App.css';
 
 class App extends Component {
   state = {
     friends: [],
+    updatedContact: null,
     filteredFriends: [],
     showNewContact: false,
+    showUpdateContact: false,
   };
 
   componentDidMount() {
@@ -41,12 +43,28 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  updateContact = contact => {
-    console.log(contact);
-    // axios
-    //   .put(`http://localhost:5000/friends/${updatedItem.id}`, updatedItem)
-    //   .then(res => this.setState({ items: res.data }))
-    //   .catch(err => console.log(err));
+  handleUpdate = contact => {
+    // console.log(contact);
+    this.setState({
+      showUpdateContact: true,
+      updatedContact: contact,
+    });
+  };
+
+  updateContact = updatedContact => {
+    axios
+      .put(
+        `http://localhost:5000/friends/${this.state.updatedContact.id}`,
+        updatedContact
+      )
+      .then(res => {
+        this.setState({
+          friends: res.data,
+          updatedContact: null,
+          showUpdateContact: false,
+        });
+      })
+      .catch(err => console.log(err));
   };
 
   showNewContactForm = () => {
@@ -87,9 +105,16 @@ class App extends Component {
             hideForm={this.hideNewContactForm}
           />
         )}
+        {this.state.showUpdateContact && (
+          <UpdateContact
+            updateContact={this.updateContact}
+            contact={this.state.updatedContact}
+          />
+        )}
+
         <ContactsList
           contacts={friends}
-          updateContact={this.updateContact}
+          handleUpdate={this.handleUpdate}
           deleteContact={this.deleteContact}
         />
         {/* <Route

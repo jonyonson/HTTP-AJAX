@@ -4,7 +4,7 @@ import { MdDeleteForever, MdEdit } from 'react-icons/md';
 
 class ContactCard extends React.Component {
   handleUpdate = e => {
-    this.props.updateContact(this.props.contact);
+    this.props.handleUpdate(this.props.contact);
   };
 
   render() {
